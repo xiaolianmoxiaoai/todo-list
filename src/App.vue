@@ -2,8 +2,8 @@
   <div id="root">
     <div class="todo-container">
     <div class="todo-wrap">
-     <TodoHeader></TodoHeader>
-      <TodoList></TodoList>
+     <TodoHeader :addTodo="addTodo"></TodoHeader>
+      <TodoList :todos="todos" :checkTodo="checkTodo"/>
       <TodoFooter></TodoFooter>
     </div>
   </div>
@@ -21,7 +21,25 @@ export default {
     TodoHeader,
     TodoFooter,
     TodoList
-  }
+  },
+    data() {
+        return {
+            "todos": [
+           ]
+    }
+    },
+    methods: {
+      // 添加一个todo
+      addTodo(todoObj){
+          this.todos.unshift(todoObj)
+      },
+        //勾选或取消勾选一个todo
+        checkTodo(id){
+          this.todos.forEach((todo)=>{
+              if(todo.id === id) todo.complete = !todo.complete
+            })
+        }
+    }
 }
 </script>
 

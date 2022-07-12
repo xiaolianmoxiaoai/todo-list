@@ -1,7 +1,7 @@
 <template>
     <li>
         <label>
-            <input type="checkbox" :checked="todoObj.complete"/>
+            <input type="checkbox" :checked="todoObj.complete" @change="handleCheck(todoObj.id)"/>
             <span>{{todoObj.title}}</span>
         </label>
         <button class="btn btn-danger" style="display:none">删除</button>
@@ -11,9 +11,12 @@
 <script>
     export default {
         name: "TodoItem",
-        props: ['todoObj'],
-        mounted() {
-            console.log(this.todoObj)
+        props: ['todoObj', 'checkTodo'],
+        methods: {
+            handleCheck(id){
+                //通知app将todo的状态取反
+                this.checkTodo(id)
+            }
         }
     }
 </script>

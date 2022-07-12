@@ -12,7 +12,7 @@
 
 <script>
     export default {
-        name: "TodoFooter"
+        name: "TodoFooter",
     }
 </script>
 
